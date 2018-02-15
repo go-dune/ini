@@ -1,7 +1,12 @@
 language: go
 
+go:
+ - 1.9
+
 install:
- - go get github.com/go-dune/ini
+ - go get github.com/alecthomas/gometalinter
+ - gometalinter --install --update
 
 script:
+ - go get github.com/go-dune/ini
  - go test github.com/go-dune/ini
