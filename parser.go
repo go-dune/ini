@@ -42,6 +42,7 @@ var (
 	reAssign = regexp.MustCompile(`([^=]+)=(.*)`)
 )
 
+// Parser is an INI format parser.
 type Parser struct {
 	Config       *Config         // Configuration instance.
 	curSection   string          // Section being parsed.
@@ -64,10 +65,12 @@ func NewParser(c *Config) *Parser {
 	return p
 }
 
+// Parse parses an INI format stream.
 func (p *Parser) Parse(reader io.Reader) error {
 	return p.parseReader(reader, "")
 }
 
+// ParseFile parses an INI format file.
 func (p *Parser) ParseFile(path string) error {
 	file, err := os.Open(path)
 	if err != nil {
@@ -134,7 +137,7 @@ func (p *Parser) curFile() string {
 }
 
 func (p *Parser) incLineNr() {
-	p.lineNrStack[len(p.lineNrStack)-1] += 1
+	p.lineNrStack[len(p.lineNrStack)-1]++
 }
 
 func (p *Parser) curLineNr() uint {

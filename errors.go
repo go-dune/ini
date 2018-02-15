@@ -31,7 +31,7 @@ type SyntaxError struct {
 func (e *SyntaxError) Error() string {
 	if e.path == "" {
 		return fmt.Sprintf("%d: %s", e.lineNr, e.msg)
-	} else {
-		return fmt.Sprintf("%s:%d: %s", e.path, e.lineNr, e.msg)
 	}
+
+	return fmt.Sprintf("%s:%d: %s", e.path, e.lineNr, e.msg)
 }
