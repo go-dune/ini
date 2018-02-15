@@ -24,6 +24,15 @@ import (
 	"testing"
 )
 
+func TestConstructor(t *testing.T) {
+	c := NewConfig()
+	p := NewParser(c)
+
+	if c != p.Config {
+		t.Errorf("expected: %q, actual: %q", p.Config, c)
+	}
+}
+
 func TestRemoveComments(t *testing.T) {
 	// Leading ; comment.
 	input := "; Leading comment"

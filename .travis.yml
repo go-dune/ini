@@ -6,9 +6,5 @@ go:
 before_install:
   - go get github.com/mattn/goveralls
 
-install:
- - go get github.com/alecthomas/gometalinter
- - gometalinter --install --update
-
 script:
  - $GOPATH/bin/goveralls -service=travis-ci
