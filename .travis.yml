@@ -3,11 +3,12 @@ language: go
 go:
  - 1.9
 
+before_install:
+  - go get github.com/mattn/goveralls
+
 install:
  - go get github.com/alecthomas/gometalinter
  - gometalinter --install --update
- - go get github.com/mattn/goveralls
 
 script:
- - cd $GOPATH/src/github.com/go-dune/ini
- - goveralls -repotoken SBgTQwQUETlP93ybYRIZ9iowuoR0tZouz
+ - $GOPATH/bin/goveralls -service=travis-ci
