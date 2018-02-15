@@ -1,0 +1,7 @@
+language: go
+
+install:
+ - go get github.com/go-dune/ini
+
+script:
+ - go test github.com/go-dune/ini
